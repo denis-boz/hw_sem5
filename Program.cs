@@ -34,6 +34,7 @@ Console.WriteLine($"Количество четных чисел в массив
 [-4, -6, 89, 6] -> 0
 */
 
+/*
 int[] GetArray(int size)
 {
     int[] resultArray = new int[size];
@@ -56,3 +57,44 @@ for (int i = 0; i < array.Length; i++)
     }
 }
 Console.WriteLine($"Сумма элементов, стоящих на нечётных позициях равна {sum}]");
+*/
+
+
+
+/*
+Задача 38: Задайте массив вещественных чисел.
+Найдите разницу между максимальным и минимальным элементов массива.
+[3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+*/
+
+double[] GetArray(int size)
+{
+    double[] resultArray = new double[size];
+
+    for (int i = 0; i < resultArray.Length; i++)
+    {
+        resultArray[i] = Math.Round(new Random().NextDouble() * 100, 2);
+    }
+    return resultArray;
+}
+double[] array = GetArray(5);
+Console.WriteLine($"Массив: [{String.Join("; ", array)}]");
+
+double maxValue = array[0];
+double minValue = array[0];
+double result = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (maxValue < array[i])
+    {
+        maxValue = array[i];
+    }
+    else if (minValue > array[i])
+    {
+        minValue = array[i];
+    }
+}
+result = maxValue - minValue;
+
+Console.WriteLine($"Максимальное число: {maxValue}, Минимальное число: {minValue}");
+Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {Math.Round(result, 2)}");
